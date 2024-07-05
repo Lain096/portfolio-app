@@ -7,6 +7,9 @@ import LinkedInIcon from "../components/Icons/LinkedIn.astro";
 import GitHubIcon from "../components/Icons/GitHub.astro";
 import MailIcon from "../components/Icons/Mail.astro";
 import Socials from "../components/Socials.astro";
+import Experience from "../components/Experience.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import BriefcaseIcon from "../components/Icons/BriefcaseIcon.astro";
 ---
 
 <Layout
@@ -14,14 +17,14 @@ import Socials from "../components/Socials.astro";
   description="Thank you for viewing my porfolio. Hope you enjoy it! If any question, please contact me."
 >
   <main>
-    <section class="w-full mx-auto lg:w-[740px] py-44">
+    <SectionContainer id="about" class='py-44 pb-20'>
       <img
         class="rounded-full size-12 transform scale-150 mb-4"
         src="/profile-pic.jpg"
         alt="Diego Laín Photo"
       />
       <h1 class="flex text-white text-4xl font-bold flex-row gap-x-4 pb-4">
-        Hi, I'm Diego Laín
+        Hola, soy Diego Laín
         <a
           href="https://www.linkedin.com/in/diegolain/"
           target="_blank"
@@ -34,10 +37,11 @@ import Socials from "../components/Socials.astro";
 
       <h2 class="text-2xl text-wrap">
         <span class="text-white-300"
-          >Born in Burgos and now living in Vigo (Pontevedra),</span
-        ><span class="text-blue-300">
-          passionate about natural sciences and technology.</span
-        >
+          >Originario de Burgos y actualmente residente en Vigo,
+        </span><span class="text-blue-300">
+          apasionado de la tecnología y las ciencias naturales
+        </span>
+        .
         <!-- <span class="opacity-80">This led me to pursue a degree in Marine Sciences followed by professional training in programming. I aim to combine both fields, applying my knowledge in biology and technology innovatively. 
 				My marine sciences background provides a solid understanding of natural systems and environmental challenges, 
 				which I now merge with my programming skills to explore new technological solutions.</span> -->
@@ -86,6 +90,11 @@ import Socials from "../components/Socials.astro";
 					</ul>
 				</div> -->
       </h2>
-    </section>
+    </SectionContainer>
+    <SectionContainer id="experience"> 
+      <h2 class="text-2xl mb-6 font-semibold flex gap-x-3 items-center">
+        <BriefcaseIcon class="size-10" />Experiencia Laboral</h2>
+      <Experience />
+    </SectionContainer>
   </main>
 </Layout>
