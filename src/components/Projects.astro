@@ -1,0 +1,66 @@
+---
+import Links from "./Links.astro";
+import AngularIcon from "./Icons/Angular.astro";
+
+const TAGS = {
+  ANGULAR: {
+    name: "Angular",
+    class: "bg-red-50 text-red-500",
+    icon: AngularIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Skincare BIotech",
+    description:
+      "Ecommerce realizado en el bootcamp dirigido por Campus Dual TIC e Imatia. La aplicación web permite a los usuarios registrarse, iniciar sesión, ver productos, añadirlos al carrito y realizar pedidos. Los vendedores tienen permitido subir sus productos y los administradores pueden gestionar productos, usuarios y pedidos. Tanto a los vendedores como a los administradores se les proporcionan métricas sobre los usuarios y los productos, con el fin de mejorar las ventas y el servicio a los usuarios.",
+    link: "https://cd2024bfs1g1.dev.campusdual.com/app/",
+    image: "/projects/Skincare_Biotech.jpg",
+    github: "https://github.com/CampusDual/2024-BFS-1-G1_SkincareBiotech",
+    tags: [TAGS.ANGULAR, "Spring", "TypeScript", "Java", "HTML5", "CSS"],
+  },
+  {
+    title: "Collage -- RPG",
+    description:
+      "Proyecto personal. RPG desarrollado en Unity utilizando una variedad de assets de Itch.io. El juego se basa en el principio de la Máquina de Estados Finitos, donde cada estado del jugador se implementa como una clase independiente, lo que garantiza la modularidad y la mantenibilidad del proyecto.",
+    link: "https://mega.nz/folder/j6hkwKTA#bYhMf15dg6KofTT0g7yMug",
+    link_text: "¡Pruébalo aquí!",
+    image: "/projects/Juego_Unity.jpg",
+    tags: ["Unity", "C#", "Visual Studio"],
+  },
+];
+---
+
+{
+  PROJECTS.map((project) => (
+    <article>
+      <h3 class="text-2xl font-semibold  text-blue-100 mb-2">
+        {project.title}
+      </h3>
+      <p class="text-lg mb-3 text-pretty">{project.description}</p>
+      <ul>
+        {project.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/10"
+        src={project.image}
+        alt={project.title}
+      />
+
+      {project.github && (
+        <Links>
+          <a href={project.github}>Ver código fuente</a>
+        </Links>
+      )}
+
+      {project.link_text && (
+        <Links>
+          <a href={project.link}>{project.link_text}</a>
+        </Links>
+      )}
+    </article>
+  ))
+}
