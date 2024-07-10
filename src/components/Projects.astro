@@ -1,12 +1,60 @@
 ---
 import Links from "./Links.astro";
 import AngularIcon from "./Icons/Angular.astro";
+import HtmlIcon from "./Icons/Html5.astro";
+import CSharpIcon from "./Icons/CSharp.astro";
+import CSSIcon from "./Icons/Css.astro";
+import JavaIcon from "./Icons/Java.astro";
+import SpringIcon from "./Icons/Spring.astro";
+import TSIcon from "./Icons/TypeScript.astro";
+import UnityIcon from "./Icons/Unity.astro";
+import VisualIcon from "./Icons/VisualStudio.astro";
 
 const TAGS = {
   ANGULAR: {
     name: "Angular",
-    class: "bg-red-50 text-red-500",
+    class: "bg-red-100 text-red-800",
     icon: AngularIcon,
+  },
+  HTML: {
+    name: "HTML5",
+    class: "bg-orange-100 text-orange-800",
+    icon: HtmlIcon,
+  },
+  CSHARP: {
+    name: "C#",
+    class: "bg-purple-100 text-purple-800",
+    icon: CSharpIcon,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-blue-100 text-blue-800",
+    icon: CSSIcon,
+  },
+  SPRING: {
+    name: "Spring",
+    class: "bg-green-100 text-green-800",
+    icon: SpringIcon,
+  },
+  JAVA: {
+    name: "Java",
+    class: "bg-yellow-100 text-yellow-800",
+    icon: JavaIcon,
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-blue-100 text-blue-800",
+    icon: TSIcon,
+  },
+  UNITY: {
+    name: "Unity",
+    class: "bg-white/20 text-white",
+    icon: UnityIcon,
+  },
+  VISUAL: {
+    name: "Visual Studio",
+    class: "bg-purple-200 text-purple-800",
+    icon: VisualIcon,
   },
 };
 
@@ -18,7 +66,7 @@ const PROJECTS = [
     link: "https://cd2024bfs1g1.dev.campusdual.com/app/",
     image: "/projects/Skincare_Biotech.jpg",
     github: "https://github.com/CampusDual/2024-BFS-1-G1_SkincareBiotech",
-    tags: [TAGS.ANGULAR, "Spring", "TypeScript", "Java", "HTML5", "CSS"],
+    tags: [TAGS.ANGULAR, TAGS.SPRING, TAGS.TYPESCRIPT, TAGS.JAVA, TAGS.HTML, TAGS.CSS],
   },
   {
     title: "Collage -- RPG",
@@ -27,40 +75,44 @@ const PROJECTS = [
     link: "https://mega.nz/folder/j6hkwKTA#bYhMf15dg6KofTT0g7yMug",
     link_text: "¡Pruébalo aquí!",
     image: "/projects/Juego_Unity.jpg",
-    tags: ["Unity", "C#", "Visual Studio"],
+    tags: [TAGS.UNITY, TAGS.CSHARP, TAGS.VISUAL],
   },
 ];
 ---
 
 {
-  PROJECTS.map((project) => (
-    <article>
-      <h3 class="text-2xl font-semibold  text-blue-100 mb-2">
-        {project.title}
-      </h3>
-      <p class="text-lg mb-3 text-pretty">{project.description}</p>
-      <ul>
-        {project.tags.map((tag) => (
-          <li>{tag}</li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-white/10"
-        src={project.image}
-        alt={project.title}
-      />
+  PROJECTS.map(
+    ({ image, title, description, tags, link, github, link_text }) => (
+      <article>
+        <h3 class="text-2xl font-semibold  text-blue-100 mb-2">{title}</h3>
+        <p class="text-lg mb-3 text-pretty">{description}</p>
+        <ul class="flex flex-row gap-x-3 items-center mb-3">
+          {tags.map((tag) => (
+            <li >
+              <span class={`flex flex-row text-sm gap-x-1 items-center rounded-full  ${tag.class} py-0.5 px-2`}>
+              <tag.icon class="size-4 "/>{tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <img
+          class="rounded shadow-2xl shadow-white/10"
+          src={image}
+          alt={title}
+        />
 
-      {project.github && (
-        <Links>
-          <a href={project.github}>Ver código fuente</a>
-        </Links>
-      )}
+        {github && (
+          <Links>
+            <a href={github}>Ver código fuente</a>
+          </Links>
+        )}
 
-      {project.link_text && (
-        <Links>
-          <a href={project.link}>{project.link_text}</a>
-        </Links>
-      )}
-    </article>
-  ))
+        {link_text && (
+          <Links>
+            <a href={link}>{link_text}</a>
+          </Links>
+        )}
+      </article>
+    )
+  )
 }
