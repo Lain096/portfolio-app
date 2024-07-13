@@ -9,6 +9,8 @@ import SpringIcon from "./Icons/Spring.astro";
 import TSIcon from "./Icons/TypeScript.astro";
 import UnityIcon from "./Icons/Unity.astro";
 import VisualIcon from "./Icons/VisualStudio.astro";
+import Socials from "./Socials.astro";
+import GitHubIcon from "./Icons/GitHub.astro";
 
 const TAGS = {
   ANGULAR: {
@@ -83,7 +85,7 @@ const PROJECTS = [
 {
   PROJECTS.map(
     ({ image, title, description, tags, link, github, link_text }) => (
-      <article>
+      <article class="mb-20">
         <h3 class="text-2xl font-semibold  text-blue-100 mb-2">{title}</h3>
         <p class="text-lg mb-3 text-pretty">{description}</p>
         <ul class="flex flex-row gap-x-3 items-center mb-3">
@@ -102,13 +104,13 @@ const PROJECTS = [
         />
 
         {github && (
-          <Links>
-            <a href={github}>Ver código fuente</a>
-          </Links>
+          <Socials href="https://github.com/Lain096" class="mt-5 w-60 lg:text-lg text-sm"
+            ><GitHubIcon class="size-4 lg:size-6" />Ver Código Fuente
+            </Socials>
         )}
 
         {link_text && (
-          <Links>
+          <Links class="mt-5 hover:scale-110 transition">
             <a href={link}>{link_text}</a>
           </Links>
         )}

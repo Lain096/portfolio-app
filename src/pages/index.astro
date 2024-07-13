@@ -1,17 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Badge from "../components/Badge.astro";
-import Pill from "../components/Pill.astro";
-import LinkedInIcon from "../components/Icons/LinkedIn.astro";
-import GitHubIcon from "../components/Icons/GitHub.astro";
-import MailIcon from "../components/Icons/Mail.astro";
-import Socials from "../components/Socials.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import SectionContainer from "../components/SectionContainer.astro";
-import BriefcaseIcon from "../components/Icons/BriefcaseIcon.astro";
-import CodeIcon from "../components/Icons/Code.astro";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import Badge from "@/components/Badge.astro";
+import Pill from "@/components/Pill.astro";
+import LinkedInIcon from "@/components/Icons/LinkedIn.astro";
+import GitHubIcon from "@/components/Icons/GitHub.astro";
+import MailIcon from "@/components/Icons/Mail.astro";
+import Socials from "@/components/Socials.astro";
+import Experience from "@/components/Experience.astro";
+import Projects from "@/components/Projects.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import AboutMe from "@/components/AboutMe.astro";
+import BriefcaseIcon from "@/components/Icons/BriefcaseIcon.astro";
+import CodeIcon from "@/components/Icons/Code.astro";
+import ProfileIcon from "@/components/Icons/Profile.astro";
 ---
 
 <Layout
@@ -19,13 +21,15 @@ import CodeIcon from "../components/Icons/Code.astro";
   description="Thank you for viewing my porfolio. Hope you enjoy it! If any question, please contact me."
 >
   <main>
-    <SectionContainer id="about" class='py-44 pb-20'>
+    <SectionContainer class="py-44 pb-20">
       <img
         class="rounded-full size-12 transform scale-150 mb-4"
         src="/profile-pic.jpg"
         alt="Diego Laín Photo"
       />
-      <h1 class="flex text-white text-3xl md:text-4xl lg:text-5xl font-bold flex-row gap-x-4 pb-6 lg:pb-10">
+      <h1
+        class="flex text-white text-3xl md:text-4xl lg:text-5xl font-bold flex-row gap-x-4 pb-6 lg:pb-10"
+      >
         Hola, soy Diego Laín
         <a
           href="https://www.linkedin.com/in/diegolain/"
@@ -40,10 +44,10 @@ import CodeIcon from "../components/Icons/Code.astro";
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
         <span class="text-white-300"
           >Originario de Burgos y actualmente residente en Vigo,
-        </span><span class="text-blue-300">
-          apasionado de la tecnología y las ciencias naturales
         </span>
-        .
+        <span class="text-blue-300">
+          apasionado de la tecnología y las ciencias naturales
+        </span>.
         <!-- <span class="opacity-80">This led me to pursue a degree in Marine Sciences followed by professional training in programming. I aim to combine both fields, applying my knowledge in biology and technology innovatively. 
 				My marine sciences background provides a solid understanding of natural systems and environmental challenges, 
 				which I now merge with my programming skills to explore new technological solutions.</span> -->
@@ -55,7 +59,9 @@ import CodeIcon from "../components/Icons/Code.astro";
             ><GitHubIcon class="size-4 lg:size-6" />GitHub</Socials
           >
           <Socials href="mailto:diegolain.personal@gmail.com"
-            ><MailIcon class="size-4 lg:size-6" />diegolain.personal@gmail.com</Socials
+            ><MailIcon
+              class="size-4 lg:size-6"
+            />diegolain.personal@gmail.com</Socials
           >
         </nav>
         <!-- <div>
@@ -93,15 +99,29 @@ import CodeIcon from "../components/Icons/Code.astro";
 				</div> -->
       </h2>
     </SectionContainer>
-    <SectionContainer id="experience" > 
-      <h2 class="text-xl lg:text-3xl mb-6 font-semibold flex gap-x-3 items-center">
-        <BriefcaseIcon class="size-5 lg:size-10" />Experiencia Laboral</h2>
+    <SectionContainer id="experience" class="pb-10">
+      <h2
+        class="text-xl lg:text-3xl mb-6 font-semibold flex gap-x-3 items-center"
+      >
+        <BriefcaseIcon class="size-5 lg:size-10" />Experiencia Laboral
+      </h2>
       <Experience />
     </SectionContainer>
-    <SectionContainer id="projects" > 
-      <h2 class="text-xl lg:text-3xl mb-6 font-semibold flex gap-x-3 items-center">
-        <CodeIcon class="size-5 lg:size-10" />Proyectos</h2>
-        <Projects/>
+    <SectionContainer id="projects" >
+      <h2
+        class="text-xl lg:text-3xl mb-6 font-semibold flex gap-x-3 items-center"
+      >
+        <CodeIcon class="size-5 lg:size-10" />Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
+    <SectionContainer id="about">
+      <h2
+        class="text-xl lg:text-3xl mb-6 font-semibold flex gap-x-3 items-center"
+      >
+        <ProfileIcon class="size-5 lg:size-10" />Sobre Mí
+      </h2>
+      <AboutMe />
     </SectionContainer>
   </main>
 </Layout>
