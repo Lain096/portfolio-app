@@ -2,6 +2,7 @@
 import Links from "./Links.astro";
 import AngularIcon from "./Icons/Angular.astro";
 import HtmlIcon from "./Icons/Html5.astro";
+import DownloadIcon from "./Icons/Download.astro";
 import CSharpIcon from "./Icons/CSharp.astro";
 import CSSIcon from "./Icons/Css.astro";
 import JavaIcon from "./Icons/Java.astro";
@@ -11,6 +12,7 @@ import UnityIcon from "./Icons/Unity.astro";
 import VisualIcon from "./Icons/VisualStudio.astro";
 import Socials from "./Socials.astro";
 import GitHubIcon from "./Icons/GitHub.astro";
+import URLICon from "./Icons/URL.astro";
 
 const TAGS = {
   ANGULAR: {
@@ -66,9 +68,18 @@ const PROJECTS = [
     description:
       "Ecommerce realizado en el bootcamp dirigido por Campus Dual TIC e Imatia. La aplicación web permite a los usuarios registrarse, iniciar sesión, ver productos, añadirlos al carrito y realizar pedidos. Los vendedores tienen permitido subir sus productos y los administradores pueden gestionar productos, usuarios y pedidos. Tanto a los vendedores como a los administradores se les proporcionan métricas sobre los usuarios y los productos, con el fin de mejorar las ventas y el servicio a los usuarios.",
     link: "https://cd2024bfs1g1.dev.campusdual.com/app/",
+    link_text: "Enlace a la aplicación",
     image: "/projects/Skincare_Biotech.jpg",
     github: "https://github.com/CampusDual/2024-BFS-1-G1_SkincareBiotech",
-    tags: [TAGS.ANGULAR, TAGS.SPRING, TAGS.TYPESCRIPT, TAGS.JAVA, TAGS.HTML, TAGS.CSS],
+    link_icon: URLICon,
+    tags: [
+      TAGS.ANGULAR,
+      TAGS.SPRING,
+      TAGS.TYPESCRIPT,
+      TAGS.JAVA,
+      TAGS.HTML,
+      TAGS.CSS,
+    ],
   },
   {
     title: "Collage -- RPG",
@@ -76,23 +87,27 @@ const PROJECTS = [
       "Proyecto personal. RPG desarrollado en Unity utilizando una variedad de assets de Itch.io. El juego se basa en el principio de la Máquina de Estados Finitos, donde cada estado del jugador se implementa como una clase independiente, lo que garantiza la modularidad y la mantenibilidad del proyecto.",
     link: "https://mega.nz/folder/j6hkwKTA#bYhMf15dg6KofTT0g7yMug",
     link_text: "¡Pruébalo aquí!",
+    link_icon: DownloadIcon,
     image: "/projects/Juego_Unity.jpg",
     tags: [TAGS.UNITY, TAGS.CSHARP, TAGS.VISUAL],
   },
 ];
 ---
 
-{
-  PROJECTS.map(
-    ({ image, title, description, tags, link, github, link_text }) => (
-      <article class="mb-20">
+<section class="flex flex-col gap-y-20">
+  {PROJECTS.map(
+    ({ image, title, description, tags, link, github, link_text, link_icon: LinkIcon }) => (
+      <article>
         <h3 class="text-2xl font-semibold  text-blue-100 mb-2">{title}</h3>
         <p class="text-lg mb-3 text-pretty">{description}</p>
         <ul class="flex flex-row gap-x-3 items-center mb-3">
           {tags.map((tag) => (
-            <li >
-              <span class={`flex flex-row text-sm gap-x-1 items-center rounded-full  ${tag.class} py-0.5 px-2`}>
-              <tag.icon class="size-4 "/>{tag.name}
+            <li>
+              <span
+                class={`flex flex-row text-sm gap-x-1 items-center rounded-full ${tag.class} py-0.5 px-2`}
+              >
+                <tag.icon class="size-4 " />
+                {tag.name}
               </span>
             </li>
           ))}
@@ -102,19 +117,22 @@ const PROJECTS = [
           src={image}
           alt={title}
         />
-
-        {github && (
-          <Socials href="https://github.com/Lain096" class="mt-5 w-60 lg:text-lg text-sm"
-            ><GitHubIcon class="size-4 lg:size-6" />Ver Código Fuente
+        <div class="flex gap-x-5">
+          {github && (
+            <Socials
+              href={github}
+              class="mt-5 w-60 lg:text-lg text-sm"
+            >
+              <GitHubIcon class="size-4 lg:size-6" />
+              Ver Código Fuente
             </Socials>
-        )}
+          )}
 
-        {link_text && (
-          <Links class="mt-5 hover:scale-110 transition">
-            <a href={link}>{link_text}</a>
-          </Links>
-        )}
+          <Socials href={link} class="mt-5 lg:text-xl text-lg hover:scale-110 transition items-center">
+            <LinkIcon class="size-4 lg:size-7" /> {link_text}
+          </Socials>
+        </div>
       </article>
     )
-  )
-}
+  )}
+</section>
